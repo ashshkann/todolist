@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form method="POST">
+  <div class="mb-3">
+    {% csrf_token %}
+    {% for error in form.user_name.errors %}
+        <p style="color: red;">{{ error }}</p>
+    {% endfor %}
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    {{ form.user_name }}
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    {{ form.password }}
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock %}
